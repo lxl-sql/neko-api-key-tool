@@ -4,10 +4,9 @@ WORKDIR /build
 COPY . /app
 #COPY ./VERSION .
 WORKDIR /app
+RUN npx update-browserslist-db@latest
 RUN npm install
 RUN npm run build
-
-
 
 FROM nginx:1.19.0-alpine
 # 将构建的React应用复制到Nginx的html目录

@@ -51,7 +51,19 @@ const LogsTable = () => {
         const firstKey = Object.keys(baseUrls)[0];
         setActiveTabKey(firstKey);
         setBaseUrl(baseUrls[firstKey]);
+
+        // 如果地址栏有key
+        const searchParams = new URLSearchParams(window.location.search);
+        const key = searchParams.get('key');
+        console.log('key', key);
+        setAPIKey(key);
     }, []);
+
+    useEffect(() => {
+        if(apikey) {
+            fetchData();
+        }
+    }, [apikey])
 
     const handleTabChange = (key) => {
         setActiveTabKey(key);
