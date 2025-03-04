@@ -1,10 +1,9 @@
-FROM node:16 as builder
+FROM node:18 as builder
 
 WORKDIR /build
 COPY . /app
 #COPY ./VERSION .
 WORKDIR /app
-RUN npx update-browserslist-db@latest
 RUN npm install
 RUN npm run build
 
